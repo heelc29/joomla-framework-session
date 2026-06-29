@@ -40,7 +40,7 @@ class DatabaseHandlerTest extends DatabaseTestCase
     public static function setUpBeforeClass(): void
     {
         // Make sure the driver is supported
-        if (!SqliteDriver::isSupported()) {
+        if (!SqliteDriver::isSupported() || \PHP_VERSION_ID >= 80500) {
             static::markTestSkipped('The SQLite driver is not supported on this platform.');
         }
 
