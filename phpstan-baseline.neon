@@ -1,15 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '''
-				#^Call to method bind\(\) of deprecated interface Joomla\\Database\\Query\\PreparableInterface\:
-				3\.0  Capabilities will be required in Joomla\\Database\\QueryInterface$#
-			'''
-			identifier: method.deprecatedInterface
-			count: 9
-			path: src/Handler/DatabaseHandler.php
-
-		-
 			message: '#^Property Joomla\\Session\\Validator\\AddressValidator\:\:\$input is never read, only written\.$#'
 			identifier: property.onlyWritten
 			count: 1
