@@ -41,11 +41,11 @@ class SessionTest extends TestCase
      */
     protected function setUp(): void
     {
-        $mockInput = $this->createMock(Input::class);
+        $stubInput = $this->createStub(Input::class);
 
         $this->storage = new RuntimeStorage();
         $this->session = new Session($this->storage);
-        $this->session->addValidator(new AddressValidator($mockInput, $this->session));
+        $this->session->addValidator(new AddressValidator($stubInput, $this->session));
     }
 
     /**
@@ -68,10 +68,10 @@ class SessionTest extends TestCase
      */
     public function testValidateASessionObjectIsCreatedCorrectly()
     {
-        // Build a mock event dispatcher
-        $mockDispatcher = $this->createMock(DispatcherInterface::class);
+        // Build a stub event dispatcher
+        $stubDispatcher = $this->createStub(DispatcherInterface::class);
 
-        $session = new Session($this->storage, $mockDispatcher);
+        $session = new Session($this->storage, $stubDispatcher);
 
         // The state should be inactive
         $this->assertSame('inactive', $session->getState());

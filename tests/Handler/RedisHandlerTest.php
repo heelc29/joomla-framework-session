@@ -39,13 +39,19 @@ class RedisHandlerTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp(): void
+    public static function setUpBeforeClass(): void
     {
         // Make sure the handler is supported in this environment
         if (!RedisHandler::isSupported()) {
             static::markTestSkipped('The RedisHandler is unsupported in this environment.');
         }
+    }
 
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp(): void
+    {
         parent::setUp();
 
         // Parse the DSN details for the test server

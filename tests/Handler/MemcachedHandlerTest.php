@@ -39,13 +39,19 @@ class MemcachedHandlerTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp(): void
+    public static function setUpBeforeClass(): void
     {
         // Make sure the handler is supported in this environment
         if (!MemcachedHandler::isSupported()) {
             static::markTestSkipped('The MemcachedHandler is unsupported in this environment.');
         }
+    }
 
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp(): void
+    {
         parent::setUp();
 
         // Parse the DSN details for the test server
@@ -68,7 +74,7 @@ class MemcachedHandlerTest extends TestCase
                 $options[$k] = $v;
             }
         } else {
-            $this->markTestSkipped('No configuration for Redis given');
+            $this->markTestSkipped('No configuration for Memcached given');
         }
 
         $this->memcached = new \Memcached();
