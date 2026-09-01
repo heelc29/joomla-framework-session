@@ -87,7 +87,7 @@ jobs:
                 image: redis
         strategy:
             matrix:
-                php_version: ['8.3', '8.4']
+                php_version: ['8.3', '8.4', '8.5']
         steps:
             - uses: actions/checkout@v6
             - uses: niden/actions-memcached@v7
@@ -96,4 +96,3 @@ jobs:
                   git config --global --add safe.directory $GITHUB_WORKSPACE
                   composer update
                   ./vendor/bin/phpunit
-
