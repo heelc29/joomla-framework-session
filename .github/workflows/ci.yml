@@ -66,11 +66,12 @@ jobs:
         container: joomlaprojects/docker-images:php8.3
         needs: [code-style-php]
         services:
+            memcached:
+                image: memcached:alpine
             redis:
                 image: redis
         steps:
             - uses: actions/checkout@v6
-            - uses: niden/actions-memcached@v7
             - name: Run Unit tests
               run: |
                   git config --global --add safe.directory $GITHUB_WORKSPACE
@@ -83,6 +84,8 @@ jobs:
         container: joomlaprojects/docker-images:php${{ matrix.php_version }}
         needs: [code-style-php]
         services:
+            memcached:
+                image: memcached:alpine
             redis:
                 image: redis
         strategy:
@@ -90,7 +93,6 @@ jobs:
                 php_version: ['8.3', '8.4', '8.5']
         steps:
             - uses: actions/checkout@v6
-            - uses: niden/actions-memcached@v7
             - name: Run Unit tests
               run: |
                   git config --global --add safe.directory $GITHUB_WORKSPACE
