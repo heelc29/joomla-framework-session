@@ -69,7 +69,7 @@ jobs:
             memcached:
                 image: memcached:alpine
             redis:
-                image: redis
+                image: redis:alpine
         steps:
             - uses: actions/checkout@v6
             - name: Run Unit tests
@@ -87,7 +87,7 @@ jobs:
             memcached:
                 image: memcached:alpine
             redis:
-                image: redis
+                image: redis:alpine
         strategy:
             matrix:
                 php_version: ['8.3', '8.4', '8.5']
